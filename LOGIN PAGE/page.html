@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <style>
+            .container{
+                display:flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+            p{
+                font-size: 30px;
+                font-weight: 900;
+            }
+            .input-tag{
+                width: 400px;
+                height: 40px;
+                margin: 10px;
+                border:1px solid gray;
+                border-radius: 10px;
+                padding-left: 10px;
+            }
+            .btn-tag{
+                background-color: red;
+                color: white;
+                font-size: 40px;
+                font-weight: bold;
+                border: none;
+                border-radius: 20px;
+                padding: 5px 20px;
+                cursor:pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div>
+                <p>Login Into Your Account</p>
+            </div>
+            <h5 id="message"></h5>
+            <div>
+                <input id="username" placeholder="Username" class="input-tag"></input>
+            </div>
+            <div>
+                <input id="password" placeholder="Password" class="input-tag"></input>
+            </div>
+            <button onclick="getValues();" class="btn-tag">Login</button>
+        </div>
+
+
+        <script>
+            const getValues=()=>{
+            var data = {
+                username:"react",
+                password:"hello"
+            };
+            var username = document.getElementById("username");
+            var password = document.getElementById("password");
+            var message = document.getElementById("message");
+            if(username.value===data.username && password.value===data.password){
+                window.location.href="./success.html";
+                // window.location.href="https://www.google.com";
+                // message.innerHTML=<p style="color:green;">Welcome to home page</p>
+                // console.log("done");
+                // message.innerText="WELCOME";
+            }
+            else{
+                window.location.href="./error.html";
+                // window.location.href="https://www.facebook.com"
+                // console.log("wrong");
+                // message.innerText="WRONG"
+            }
+            };
+        </script>
+    </body>
+</html>

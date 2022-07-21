@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <style>
+            #insert{
+                justify-content: center;
+                align-items: center;
+                margin: 10px;
+                padding: 10px;
+                font-size: 25px;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <div>
+                <button
+                style="color:white;
+                background-color: black;
+                cursor:pointer;
+                border:none;
+                width: 300px;
+                height: 100px;
+                font-size: 50px;"
+                onclick="get()"
+                >
+                    GET
+                </button>
+            </div>
+            <div id="insert">
+            </div>
+        </center>
+        <script>
+            const get =()=>{
+                var ins=document.getElementById("insert");
+                let url="https://jsonplaceholder.typicode.com/todos";
+                fetch(url).then(
+                    (res)=>{
+                        return res.json();
+                    }
+                )
+                .then(
+                    (res)=>{
+                        const tobe = res.map(
+                            (todos) =>{
+                                if(todos.completed==true){
+                                    return `
+                                    <p>id : ${todos.id}</p>
+                                    <p>title : ${todos.title}</p>
+                                    <p>user ID : ${todos.userId}</p>
+                                    <p> status : ${todos.completed}</p>
+                                    <br>
+                                    `
+                                }
+                            }
+                        ).join(" ");
+                        ins.innerHTML=tobe;
+                    }
+                );
+            }
+        </script>
+    </body>
+</html>
